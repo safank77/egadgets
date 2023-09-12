@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+
+
+{% block login %}
+
+{% if messages%}
+    {% for i in messages %}
+      {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="'alert alert-success">
+          {{i}}
+        </div>
+      {% endif %}
+    {% endfor %}
+
+
+{% endif %}
+
+{% if messages%}
+    {% for i in messages %}
+      {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="'alert alert-danger">
+          {{i}}
+        </div>
+      {% endif %}
+    {% endfor %}
+
+
+{% endif %}
+
+<form id="log" action="" method="post">
+  {%csrf_token%}
+  <h1>Login</h1>
+
+{{form.as_div}}
+
+<button>Login</button>
+
+<div class="social">New to user?<a href="{% url 'reg' %}">Sign up</a>
+</div>
+
+<form>
+{% endblock login %}

@@ -1,0 +1,18 @@
+{% extends "index.html" %} 
+
+{% block login %}
+
+<form class="reg" action="" method="post">
+    {%csrf_token%}
+    <div>
+        {{form.as_div}}
+    </div>
+
+    <div>
+        <button>Submit</button>
+        
+    </div>
+</form>
+
+
+{% endblock login %}

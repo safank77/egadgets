@@ -1,0 +1,70 @@
+{%extends 'navbar.html'%}
+{% block content %}
+
+    <!-- <h1> customer`</h1> -->
+
+    {% for i in products %}
+
+    <!-- <p>{{i.name}}</p>
+    <img src="{{i.image}}" alt=""> -->
+
+    {%endfor%}
+
+    <h1  class=" font-italic text-center" style="background-color: black; color: white;">
+      <span  class="material-symbols-outlined">
+        shopping_cart_checkout
+        </span>
+
+    e-GADGETS</h1>
+    {% if messages%}
+    {% for i in messages %}
+      {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="'alert alert-success">
+          {{i}}
+        </div>
+      {% endif %}
+    {% endfor %}
+
+
+{% endif %}
+
+{% if messages%}
+    {% for i in messages %}
+      {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="'alert alert-danger">
+          {{i}}
+        </div>
+      {% endif %}
+    {% endfor %}
+
+
+{% endif %}
+    <h3 style="color:green;"> <i> Welcome.{{request.user.first_name}} {{request.user.last_name}} </i></h3>
+
+    <div class="row">
+      {% for i in products %}
+
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" height="250px" width="200px" src="{{i.image.url}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{i.name}}</h5>
+          <p class="card-text">{{i.category}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <!-- <li class="list-group-item">Cras justo odio</li> -->
+          <!-- <li class="list-group-item">{{i.description}}</li>
+          <li class="list-group-item">{{i.price}}</li> -->
+        </ul>
+        <div class="card-body">
+          <a href="{% url 'pdet' i.id %}" class="card-link btn btn-warning" >View More</a>
+          
+        </div>
+      </div>
+      {%endfor%}
+
+
+
+    </div>
+      
+
+{% endblock content %}
